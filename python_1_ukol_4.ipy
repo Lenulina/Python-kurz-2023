@@ -1,0 +1,30 @@
+def overeni_a_cena_zpravy(cislo, zprava):
+    # Ověření, zda je číslo devítimístné nebo třináctimístné
+    if (len(cislo) == 9) or (len(cislo) == 13 and cislo[:4] == "+420"):
+        # Ověření, zda moje číslo splňuje podminku na 9 13 mistné a zdali má dobře předvolbu
+        platne_cislo = True #pokud tomu tak je vrátí mi to true
+    else:
+        platne_cislo = False #pokud tomu tak není vrátí mi to false
+    if platne_cislo: #pokud je splněna podminka pokračuje funkce dál jinak mi to přeskočí 
+        delka_zpravy = len(zprava)
+        cena = (delka_zpravy // 180) * 3 # //potřebuji celé dělitelné číslo 
+        if delka_zpravy > 0: #cena zprávy využívá vypočtu
+            cena = cena + 3
+    else:
+        cena = 0  # Cena bude 0, když číslo není platné
+
+    return platne_cislo, cena #potřebuji pracovat s výstupem z funkce
+
+cislo = "+420123456789"
+zprava = "Toto je moje SMS zpráva5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555."
+#proměné funkce 
+platne_cislo, cena = overeni_a_cena_zpravy(cislo, zprava) #volaní funkce 
+
+if platne_cislo:
+    print("Telefonní číslo je platné.")
+    print(f"Cena zprávy: {cena} Kč")
+else:
+    print("Telefonní číslo není platné.")
+
+délka = len(zprava) #oveření pro mě jestli mi to počítá dobře znaky 
+print(délka)
